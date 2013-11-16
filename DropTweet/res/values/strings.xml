@@ -4,5 +4,8 @@
     <string name="app_name">Drop Tweet</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+	<string name="eula">EULA</string>
+	<string name="agree">AGREE</string>
+	<string name="reject">REJECT</string>
 
 </resources>
