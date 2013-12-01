@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.droptweet.Const;
 import com.example.droptweet.R;
 
 import twitter4j.TwitterException;
@@ -15,9 +16,6 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationContext;
 
 public class AuthActivity extends Activity implements Runnable {
-    public static final String CONSUMER_KEY = "";
-    public static final String CONSUMER_SECRET = "";
-
     public static RequestToken _req;
     public static OAuthAuthorization _oauth;
 
@@ -39,7 +37,7 @@ public class AuthActivity extends Activity implements Runnable {
         Configuration conf = ConfigurationContext.getInstance();
 
         _oauth = new OAuthAuthorization(conf);
-        _oauth.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+        _oauth.setOAuthConsumer(Const.CONSUMER_KEY, Const.CONSUMER_SECRET);
         try {
             _req = _oauth.getOAuthRequestToken("callback://CallBackActivity");
         } catch (TwitterException e) {
