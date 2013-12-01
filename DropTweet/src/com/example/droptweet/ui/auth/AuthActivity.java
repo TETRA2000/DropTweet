@@ -24,6 +24,8 @@ public class AuthActivity extends Activity implements Runnable {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_auth);
+
         findViewById(R.id.button_auth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
