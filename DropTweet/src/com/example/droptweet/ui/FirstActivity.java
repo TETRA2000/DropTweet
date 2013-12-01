@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
+import com.example.droptweet.ui.auth.AuthActivity;
 
 public class FirstActivity extends Activity
 {
@@ -30,7 +31,11 @@ public class FirstActivity extends Activity
 		{
             showTutorialDialog();
 		}
-		else if (hasAccount())
+        else if(!hasAccount()) {
+            startActivity(new Intent(FirstActivity.this, AuthActivity.class));
+            finish();
+        }
+		else
 		{
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
@@ -121,7 +126,7 @@ public class FirstActivity extends Activity
             public void onClick(DialogInterface p1, int p2)
             {
                 setLaunchState(true);
-                startActivity(new Intent(FirstActivity.this, MainActivity.class));
+                startActivity(new Intent(FirstActivity.this, AuthActivity.class));
                 finish();
             }
         });
