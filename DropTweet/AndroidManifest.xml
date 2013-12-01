@@ -29,7 +29,14 @@
             </intent-filter>
 		</activity>
         <activity android:name=".ui.auth.AuthActivity"/>
-        <activity android:name=".ui.auth.CallbackActivity"/>
+        <activity android:name=".ui.auth.CallbackActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="callback" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name="com.example.droptweet.SensorService"
