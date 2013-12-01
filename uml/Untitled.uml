@@ -722,7 +722,7 @@
 <XPD:REF name="Owner">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="gNwLhOTUCUe03xKtmBEypAAA">
-<XPD:ATTR name="Name" type="string">key</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">token</XPD:ATTR>
 <XPD:REF name="Owner">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="leyAsZnT7EGQuJCSh+Es1QAA">

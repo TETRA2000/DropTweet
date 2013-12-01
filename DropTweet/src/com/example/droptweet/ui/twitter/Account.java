@@ -1,10 +1,10 @@
 package com.example.droptweet.ui.twitter;
 
 public class Account {
-    public String name, key, secret;
-    public Account(String name, String key, String secret) {
+    public String name, token, secret;
+    public Account(String name, String token, String secret) {
         this.name = name;
-        this.key = key;
+        this.token = token;
         this.secret = secret;
     }
 }
