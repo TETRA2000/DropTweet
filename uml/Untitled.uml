@@ -413,7 +413,7 @@
 <XPD:ATTR name="Left" type="integer">672</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">520</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">90</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">69</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">82</XPD:ATTR>
 <XPD:REF name="Model">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="KactKP6CVEC9dbMRQESSPgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="LwfSlRD4t0eKfkSXZuMQPgAA">
@@ -706,12 +706,16 @@
 <XPD:ATTR name="#TypedParameters" type="integer">2</XPD:ATTR>
 <XPD:REF name="TypedParameters[0]">R0XcGTrv6EmqYp67FouLpgAA</XPD:REF>
 <XPD:REF name="TypedParameters[1]">zCG9yxgo+0S94Zk9oXSBmQAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
-<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="gNwLhOTUCUe03xKtmBEypAAA">
+<XPD:ATTR name="#Attributes" type="integer">3</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="w1TaPp5kNEec0NF3Csm8/QAA">
+<XPD:ATTR name="Name" type="string">name</XPD:ATTR>
+<XPD:REF name="Owner">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="gNwLhOTUCUe03xKtmBEypAAA">
 <XPD:ATTR name="Name" type="string">key</XPD:ATTR>
 <XPD:REF name="Owner">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="leyAsZnT7EGQuJCSh+Es1QAA">
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="leyAsZnT7EGQuJCSh+Es1QAA">
 <XPD:ATTR name="Name" type="string">secret</XPD:ATTR>
 <XPD:REF name="Owner">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 </XPD:OBJ>
