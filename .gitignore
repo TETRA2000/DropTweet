@@ -38,3 +38,6 @@ proguard/
 
 # Mac cache file
 ._.DS_Store
+
+#starUML temp file
+*.~ml
