@@ -6,10 +6,14 @@ public class AccountManager {
     }
 
     public void setAccount(Account account) {
-        
+
     }
 
     public Account getAccount() {
 
+    }
+
+    public void removeAccount() {
+        
     }
 }

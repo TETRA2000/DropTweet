@@ -382,7 +382,7 @@
 <XPD:ATTR name="Left" type="integer">548</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">412</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">207</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">89</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">95</XPD:ATTR>
 <XPD:REF name="Model">MgLriX6i50qyka7cMakekQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="aW+AqiypA0+B5HcXquhB1AAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="C5x5HF3xOEyy5UAQNh+AFgAA">
@@ -659,7 +659,7 @@
 <XPD:REF name="Views[1]">YMTp5NBdsEOmlNAeb/vGPwAA</XPD:REF>
 <XPD:REF name="Views[2]">RnyDbkgM6keq65H9/KOiFwAA</XPD:REF>
 <XPD:REF name="Views[3]">udGK5iKf0ECI+tMBqLNp3QAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">3</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">4</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="c/s7FLXByk+KKkfGn5WdnQAA">
 <XPD:ATTR name="Name" type="string">hasAccount</XPD:ATTR>
 <XPD:REF name="Owner">MgLriX6i50qyka7cMakekQAA</XPD:REF>
@@ -689,6 +689,10 @@
 <XPD:REF name="BehavioralFeature">eJSWJ3SCfUKknhTbVeHZqwAA</XPD:REF>
 <XPD:REF name="Type_">gw7UwDjSrkOEnXOGkxyLqQAA</XPD:REF>
 </XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[3]" type="UMLOperation" guid="ot0UgT/IzEqzEVbbldyDIAAA">
+<XPD:ATTR name="Name" type="string">removeAccount</XPD:ATTR>
+<XPD:REF name="Owner">MgLriX6i50qyka7cMakekQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[1]" type="UMLClass" guid="gw7UwDjSrkOEnXOGkxyLqQAA">
