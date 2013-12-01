@@ -15,8 +15,8 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationContext;
 
 public class AuthActivity extends Activity implements Runnable {
-    private static final String CONSUMER_KEY = "";
-    private static final String CONSUMER_SECRET = "";
+    public static final String CONSUMER_KEY = "";
+    public static final String CONSUMER_SECRET = "";
 
     public static RequestToken _req;
     public static OAuthAuthorization _oauth;
