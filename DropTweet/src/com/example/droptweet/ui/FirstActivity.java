@@ -10,10 +10,12 @@ import android.view.View;
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
 import com.example.droptweet.ui.auth.AuthActivity;
+import com.example.droptweet.ui.twitter.AccountManager;
 
 public class FirstActivity extends Activity
 {
     private SharedPreferences mPref;
+    private AccountManager mManager;
 
 	@Override
 	protected void onCreate(Bundle state)
@@ -21,6 +23,7 @@ public class FirstActivity extends Activity
 		super.onCreate(state);
 
         mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
+        mManager = new AccountManager(this);
 
 		if (!getEulaState())
 		{
@@ -69,7 +72,7 @@ public class FirstActivity extends Activity
 
     private boolean hasAccount()
 	{
-		return mPref.contains(Const.KEY_USER_NAME);
+		return mManager.hasAccount();
 	}
 
     private void showEULADialog()
