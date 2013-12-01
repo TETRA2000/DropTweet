@@ -14,11 +14,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.droptweet.MainActivity"
+            android:name="com.example.droptweet.ui.MainActivity"
             android:label="@string/app_name" >
         </activity>
 		<activity
-			android:name="com.example.droptweet.FirstActivity"
+			android:namcom.example.droptweet.ui.FirstActivityity"
 			android:label="first">
 			<intent-filter>
                 <action android:name="android.intent.action.MAIN" />

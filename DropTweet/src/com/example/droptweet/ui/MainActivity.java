@@ -1,4 +1,4 @@
-package com.example.droptweet;
+package com.example.droptweet.ui;
 
 import android.app.Activity;
 

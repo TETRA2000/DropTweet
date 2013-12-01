@@ -1,4 +1,9 @@
-package com.example.droptweet;
+package com.example.droptweet.ui;
+import com.example.droptweet.Const;
+import com.example.droptweet.R;
+import com.example.droptweet.R.layout;
+import com.example.droptweet.R.string;
+
 import android.app.*;
 import android.os.*;
 import android.content.*;
@@ -105,4 +110,8 @@ public class FirstActivity extends Activity
 		AlertDialog dialog = builder.create();
 		dialog.show();
     }
+	
+	private void showTutorialDialog() {
+		
+	}
 }
