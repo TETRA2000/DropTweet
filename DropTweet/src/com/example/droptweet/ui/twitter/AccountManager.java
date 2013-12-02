@@ -17,6 +17,9 @@ public class AccountManager {
     }
 
     public void setAccount(Account account) {
+    	if(account==null)
+    		return;
+    	
         SharedPreferences.Editor editor = mPref.edit();
         editor.putString(Const.KEY_USER_NAME, account.name);
         editor.putString(Const.KEY_TOKEN, account.token);
@@ -28,7 +31,9 @@ public class AccountManager {
         String name = mPref.getString(Const.KEY_USER_NAME, null);
         String token = mPref.getString(Const.KEY_TOKEN, null);
         String tokenSecret = mPref.getString(Const.KEY_TOKEN_SECRET, null);
-        return new Account(name, token, tokenSecret);
+        
+        return !(name==null && token==null && tokenSecret==null) ?
+        		new Account(name, token, tokenSecret) : null;
     }
 
     public void removeAccount() {
