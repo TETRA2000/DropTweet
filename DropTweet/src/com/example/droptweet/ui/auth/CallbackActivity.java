@@ -15,7 +15,7 @@ public class CallbackActivity extends Activity {
 
         Uri uri = getIntent().getData();
         if(uri!=null &&
-                uri.toString().startsWith("Callback://CallBackActivity")){
+                uri.toString().startsWith("callback://CallbackActivity")){
             String verifier = uri.getQueryParameter("oauth_verifier");
             try
             {
