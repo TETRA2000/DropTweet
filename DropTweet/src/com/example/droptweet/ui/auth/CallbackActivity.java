@@ -17,6 +17,12 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
+import android.os.*;
+import org.apache.http.client.protocol.*;
+import com.example.droptweet.ui.twitter.*;
+import twitter4j.auth.*;
+import java.sql.*;
+import android.util.*;
 
 public class CallbackActivity extends Activity {
     @Override
@@ -28,8 +34,6 @@ public class CallbackActivity extends Activity {
 		
 		Toast.makeText(this, "callback", Toast.LENGTH_LONG).show();
 
-        AccessToken token = null;
-
         Uri uri = getIntent().getData();
 		
 		Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
@@ -37,34 +41,58 @@ public class CallbackActivity extends Activity {
         if(uri!=null &&
                 uri.toString().startsWith("callback://CallbackActivity")){
             String verifier = uri.getQueryParameter("oauth_verifier");
-            try
-            {
-                token = AuthActivity._oauth.getOAuthAccessToken(AuthActivity._req, verifier);
-				
+            
+			RequestTokenPair pair = new RequestTokenPair(AuthActivity._req, verifier);
+			TokenTask task = new TokenTask();
+			task.execute(pair);
+           
+        }
+    }
+	
+	class TokenTask extends AsyncTask<RequestTokenPair, Integer, AccessToken>
+	{
+
+		@Override
+		protected AccessToken doInBackground(RequestTokenPair[] param)
+		{
+			RequestToken token = param[0].token;
+			String verifier = param[0].verifier;
+			
+			try
+			{
+				return AuthActivity._oauth.getOAuthAccessToken(token, verifier);
+			}
+			catch (TwitterException e)
+			{
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		@Override
+		public void onPostExecute(AccessToken token) {
+			if(token != null) {
+
 				//set token
 				Twitter twitter = TwitterFactory.getSingleton();
 				twitter.setOAuthConsumer(Const.CONSUMER_KEY, Const.CONSUMER_SECRET);
 				twitter.setOAuthAccessToken(token);
-				
+
 				//save token
 				Account account = new Account(token.getScreenName(), token.getToken(), token.getTokenSecret());
-				AccountManager manager = new AccountManager(this);
+				AccountManager manager = new AccountManager(CallbackActivity.this);
 				manager.setAccount(account);
-				
-				Toast.makeText(this, "success", Toast.LENGTH_LONG).show();
-				
+
+				Toast.makeText(CallbackActivity.this, "success", Toast.LENGTH_LONG).show();
+
 				//go to MainActivity
-				Intent intent = new Intent(this, MainActivity.class);
+				Intent intent = new Intent(CallbackActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
-            }
-            catch (TwitterException e)
-            {
-                e.printStackTrace();
-                //TODO err msg
-				Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
-    }
+			} else {
+				Toast.makeText(CallbackActivity.this, "failed", Toast.LENGTH_SHORT).show();
+				finish();
+			}
+		}
+	}
 }
