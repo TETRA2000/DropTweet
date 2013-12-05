@@ -1,22 +1,30 @@
 package com.example.droptweet.ui.auth;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Window;
+import android.widget.Toast;
 
+import com.example.droptweet.Const;
+import com.example.droptweet.ui.MainActivity;
+import com.example.droptweet.ui.twitter.Account;
+import com.example.droptweet.ui.twitter.AccountManager;
+
+import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import com.example.droptweet.ui.twitter.*;
-import twitter4j.*;
-import com.example.droptweet.*;
-import android.content.*;
-import com.example.droptweet.ui.*;
-import android.widget.*;
 
 public class CallbackActivity extends Activity {
     @Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Window window = getWindow();
+        window.setFormat(PixelFormat.RGBA_8888);
 		
 		Toast.makeText(this, "callback", Toast.LENGTH_LONG).show();
 
