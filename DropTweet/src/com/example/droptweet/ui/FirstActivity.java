@@ -12,7 +12,7 @@ import android.view.Window;
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
 import com.example.droptweet.ui.auth.AuthActivity;
-import com.example.droptweet.ui.twitter.AccountManager;
+import com.example.droptweet.twitter.AccountManager;
 
 public class FirstActivity extends Activity
 {

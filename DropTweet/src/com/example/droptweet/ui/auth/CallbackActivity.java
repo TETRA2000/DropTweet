@@ -4,25 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.example.droptweet.Const;
+import com.example.droptweet.twitter.Account;
+import com.example.droptweet.twitter.AccountManager;
+import com.example.droptweet.twitter.RequestTokenPair;
 import com.example.droptweet.ui.MainActivity;
-import com.example.droptweet.ui.twitter.Account;
-import com.example.droptweet.ui.twitter.AccountManager;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import android.os.*;
-import org.apache.http.client.protocol.*;
-import com.example.droptweet.ui.twitter.*;
-import twitter4j.auth.*;
-import java.sql.*;
-import android.util.*;
+import twitter4j.auth.RequestToken;
 
 public class CallbackActivity extends Activity {
     @Override
