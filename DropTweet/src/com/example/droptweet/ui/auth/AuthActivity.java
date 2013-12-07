@@ -47,6 +47,9 @@ public class AuthActivity extends Activity implements Runnable {
             _req = _oauth.getOAuthRequestToken("callback://CallbackActivity");
         } catch (TwitterException e) {
             e.printStackTrace();
+            // TODO エラーメッセージ
+            finish();
+            return;
         }
 
         String _uri;
