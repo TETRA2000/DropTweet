@@ -9,6 +9,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.widget.Toast;
+import android.os.*;
 
 public class SensorService extends Service implements SensorEventListener {
 	
@@ -19,12 +20,19 @@ public class SensorService extends Service implements SensorEventListener {
 	private SensorManager mSensorManager;
 	private Sensor mAccel;
 	
+	private PowerManager.WakeLock mWakeLock;
+	
 	private boolean mFallFlag;
 	private long mFallStartTime; // nano seconds
 	
 	@Override
 	public int onStartCommand (Intent intent, int flags, int startId) {
-        if(!setUpSensor())
+		if(mWakeLock == null || !mWakeLock.isHeld()) {
+			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getString(R.string.app_name));
+		}
+		
+		if(!setUpSensor())
         	this.stopSelf();
         
         mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_NORMAL);
@@ -35,6 +43,8 @@ public class SensorService extends Service implements SensorEventListener {
 	@Override
 	public void onDestroy() {
 		mSensorManager.unregisterListener(this, mAccel);
+		
+		mWakeLock.release();
 	}
 
 	@Override
