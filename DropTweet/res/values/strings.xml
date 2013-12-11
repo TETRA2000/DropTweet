@@ -8,5 +8,8 @@
 	<string name="agree">AGREE</string>
 	<string name="reject">REJECT</string>
     <string name="login">LOGIN</string>
+    <string name="tweet_pre">Dropped phone </string>
+    <string name="tweet_suf">m!!</string>
+    <string name="tweet_format">Dropped phone %f m!! This is %d times.</string>
 
 </resources>
