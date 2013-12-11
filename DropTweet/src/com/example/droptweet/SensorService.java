@@ -20,6 +20,8 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
+import android.support.v4.app.*;
+import android.app.*;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -33,8 +35,15 @@ public class SensorService extends Service implements SensorEventListener {
 	
 	private PowerManager.WakeLock mWakeLock;
 	
+	private NotificationManager mNotifManager;
+	
 	private boolean mFallFlag;
 	private long mFallStartTime; // nano seconds
+	
+	@Override
+	public void onCreate() {
+		mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+	}
 	
 	@Override
 	public int onStartCommand (Intent intent, int flags, int startId) {
@@ -152,7 +161,14 @@ public class SensorService extends Service implements SensorEventListener {
 
         @Override
         public void onPostExecute(Float height) {
-            // TODO 通知
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(SensorService.this);
+			builder
+				.setSmallIcon(android.R.drawable.ic_dialog_alert)
+				.setContentTitle(getString(R.string.notification_title))
+				.setContentText(getString(R.string.notification_format, height));
+			
+			// idはテスト
+			mNotifManager.notify(274, builder.build());
         }
     }
 }
