@@ -7,10 +7,19 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
-import android.os.*;
+
+import com.example.droptweet.twitter.Account;
+import com.example.droptweet.twitter.AccountManager;
+
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -106,4 +115,44 @@ public class SensorService extends Service implements SensorEventListener {
 	private double getHeight(long time) {
 		return 0.5 * GRAVITY * Math.pow(0.000000001 * time, 2);
 	}
+
+    class TweetTask extends AsyncTask<Float, Integer, Float> {
+        private String TAG = "TweetTask";
+
+        @Override
+        protected Float doInBackground(Float... heights) {
+            AccountManager manager = new AccountManager(SensorService.this);
+            Account account = manager.getAccount();
+
+            if(account==null)
+                return null;
+
+            float height = heights[0];
+
+            Twitter twitter = TwitterFactory.getSingleton();
+            twitter.setOAuthConsumer(Const.KEY_TOKEN, Const.KEY_TOKEN_SECRET);
+            twitter.setOAuthAccessToken(new AccessToken(account.token, account.secret));
+
+            StringBuilder builder = new StringBuilder();
+            builder.append(getString(R.string.tweet_pre));
+            builder.append(height);
+            builder.append(getString(R.string.tweet_suf));
+            builder.append(" ");
+            builder.append(Const.HASH_TAG);
+
+            try {
+                twitter.updateStatus(builder.toString());
+                return height;
+            } catch (TwitterException e) {
+                e.printStackTrace();
+                Log.d(TAG, "failed to tweet");
+                return null;
+            }
+        }
+
+        @Override
+        public void onPostExecute(Float height) {
+            // TODO 通知
+        }
+    }
 }
