@@ -8,10 +8,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 import android.os.*;
 
 public class SensorService extends Service implements SensorEventListener {
+    private static final String TAG = "SensorService";
 	
 	private static final float THRESHOLD = 2.5f;
 	private static final long MIN_FALL_TIME = 247000000; // 0.30m
@@ -32,10 +34,14 @@ public class SensorService extends Service implements SensorEventListener {
 			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getString(R.string.app_name));
 		}
 		
-		if(!setUpSensor())
-        	this.stopSelf();
+		if(!setUpSensor()) {
+            Log.d(TAG, "no accelerometer");
+            this.stopSelf();
+        }
         
         mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_NORMAL);
+
+        Log.d(TAG, "service started successfully");
         
         return START_STICKY;
 	}
