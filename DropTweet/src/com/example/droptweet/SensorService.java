@@ -121,8 +121,8 @@ public class SensorService extends Service implements SensorEventListener {
 	 * @param time time in nano seconds
 	 * @return fall height in meter
 	 */
-	private double getHeight(long time) {
-		return 0.5 * GRAVITY * Math.pow(0.000000001 * time, 2);
+	private float getHeight(long time) {
+		return (float) (0.5 * GRAVITY * Math.pow(0.000000001 * time, 2));
 	}
 
     class TweetTask extends AsyncTask<Float, Integer, Float> {
