@@ -1,5 +1,6 @@
 package com.example.droptweet;
 
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,8 +22,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import android.support.v4.app.*;
-import android.app.*;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -110,8 +110,13 @@ public class SensorService extends Service implements SensorEventListener {
 				
 				long fallTime = event.timestamp - mFallStartTime;
 				
-				if(fallTime >= MIN_FALL_TIME)
-					Toast.makeText(this, fallTime + "ns: " + getHeight(fallTime) + "m", Toast.LENGTH_LONG).show();
+				if(fallTime >= MIN_FALL_TIME) {
+                    float height = getHeight(fallTime);
+                    Toast.makeText(this, fallTime + "ns: " + height + "m", Toast.LENGTH_LONG).show();
+
+                    TweetTask tweetTask = new TweetTask();
+                    tweetTask.execute(height);
+                }
 			}
 		}
 	}
