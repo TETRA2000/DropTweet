@@ -63,6 +63,11 @@ public class AuthActivity extends Activity implements Runnable {
     class AuthTask extends AsyncTask<Objects, Objects, Boolean> {
 
         @Override
+        protected void onPreExecute() {
+            // TODO ダイアログを表示
+        }
+
+        @Override
         protected Boolean doInBackground(Objects... params) {
             Configuration conf = ConfigurationContext.getInstance();
 
@@ -81,11 +86,14 @@ public class AuthActivity extends Activity implements Runnable {
 
         @Override
         protected void onPostExecute(Boolean success) {
+            // TODO ダイアログを破棄
+
             if(success) {
                 String _uri;
                 _uri = _req.getAuthorizationURL();
                 startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse(_uri)), 0);
             } else {
+                // TODO エラーメッセージ
                 finish();
             }
         }
