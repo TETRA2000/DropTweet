@@ -7,15 +7,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.droptweet.Const;
 import com.example.droptweet.twitter.Account;
 import com.example.droptweet.twitter.AccountManager;
 import com.example.droptweet.twitter.RequestTokenPair;
+import com.example.droptweet.twitter.TwitterManager;
 import com.example.droptweet.ui.MainActivity;
 
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
@@ -65,15 +63,13 @@ public class CallbackActivity extends Activity {
 		public void onPostExecute(AccessToken token) {
 			if(token != null) {
 
-				//set token
-				Twitter twitter = TwitterFactory.getSingleton();
-				twitter.setOAuthConsumer(Const.CONSUMER_KEY, Const.CONSUMER_SECRET);
-				twitter.setOAuthAccessToken(token);
-
 				//save token
 				Account account = new Account(token.getScreenName(), token.getToken(), token.getTokenSecret());
 				AccountManager manager = new AccountManager(CallbackActivity.this);
 				manager.setAccount(account);
+
+                //init TwitterManager
+                TwitterManager.init(account);
 
 				Toast.makeText(CallbackActivity.this, "success", Toast.LENGTH_LONG).show();
 

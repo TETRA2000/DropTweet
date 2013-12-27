@@ -17,11 +17,10 @@ import android.widget.Toast;
 
 import com.example.droptweet.twitter.Account;
 import com.example.droptweet.twitter.AccountManager;
+import com.example.droptweet.twitter.TwitterManager;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.auth.AccessToken;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -143,9 +142,7 @@ public class SensorService extends Service implements SensorEventListener {
 
             float height = heights[0];
 
-            Twitter twitter = TwitterFactory.getSingleton();
-            twitter.setOAuthConsumer(Const.KEY_TOKEN, Const.KEY_TOKEN_SECRET);
-            twitter.setOAuthAccessToken(new AccessToken(account.token, account.secret));
+            Twitter twitter = TwitterManager.getTwitter();
 
             StringBuilder builder = new StringBuilder();
             builder.append(getString(R.string.tweet_pre));

@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
 import com.example.droptweet.twitter.AccountManager;
+import com.example.droptweet.twitter.TwitterManager;
 import com.example.droptweet.ui.auth.AuthActivity;
 
 public class FirstActivity extends Activity
@@ -35,6 +36,8 @@ public class FirstActivity extends Activity
             showTutorialDialog();
 		}
         else if(!mManager.hasAccount()) {
+            TwitterManager.init(mManager.getAccount());
+
             startActivity(new Intent(FirstActivity.this, AuthActivity.class));
             finish();
         }
