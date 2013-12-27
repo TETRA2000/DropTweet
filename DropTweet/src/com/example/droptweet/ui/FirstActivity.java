@@ -4,15 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
-import com.example.droptweet.ui.auth.AuthActivity;
 import com.example.droptweet.twitter.AccountManager;
+import com.example.droptweet.ui.auth.AuthActivity;
 
 public class FirstActivity extends Activity
 {
@@ -23,9 +21,6 @@ public class FirstActivity extends Activity
 	protected void onCreate(Bundle state)
 	{
 		super.onCreate(state);
-
-        Window window = getWindow();
-        window.setFormat(PixelFormat.RGBA_8888);
 
         mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
         mManager = new AccountManager(this);

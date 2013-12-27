@@ -2,12 +2,10 @@ package com.example.droptweet.ui.auth;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
@@ -26,9 +24,6 @@ public class AuthActivity extends Activity implements Runnable {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Window window = getWindow();
-        window.setFormat(PixelFormat.RGBA_8888);
 
         setContentView(R.layout.activity_auth);
 

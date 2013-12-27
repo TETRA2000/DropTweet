@@ -2,11 +2,9 @@ package com.example.droptweet.ui.auth;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.example.droptweet.Const;
@@ -25,9 +23,6 @@ public class CallbackActivity extends Activity {
     @Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Window window = getWindow();
-        window.setFormat(PixelFormat.RGBA_8888);
 		
 		Toast.makeText(this, "callback", Toast.LENGTH_LONG).show();
 
