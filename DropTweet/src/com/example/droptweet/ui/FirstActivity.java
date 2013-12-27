@@ -34,7 +34,7 @@ public class FirstActivity extends Activity
 		{
             showTutorialDialog();
 		}
-        else if(!hasAccount()) {
+        else if(!mManager.hasAccount()) {
             startActivity(new Intent(FirstActivity.this, AuthActivity.class));
             finish();
         }
@@ -69,11 +69,6 @@ public class FirstActivity extends Activity
         edit.putBoolean(Const.KEY_LAUNCHED, state);
         edit.commit();
     }
-
-    private boolean hasAccount()
-	{
-		return mManager.hasAccount();
-	}
 
     private void showEULADialog()
 	{
