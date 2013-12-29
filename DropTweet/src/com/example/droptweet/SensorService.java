@@ -145,9 +145,7 @@ public class SensorService extends Service implements SensorEventListener {
             Twitter twitter = TwitterManager.getTwitter();
 
             StringBuilder builder = new StringBuilder();
-            builder.append(getString(R.string.tweet_pre));
-            builder.append(height);
-            builder.append(getString(R.string.tweet_suf));
+            builder.append(getString(R.string.tweet_format, height, 0));
             builder.append(" ");
             builder.append(Const.HASH_TAG);
 

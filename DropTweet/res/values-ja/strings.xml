@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Drop Tweet</string>
+    <string name="action_settings">Settings</string>
+	<string name="eula">EULA</string>
+	<string name="agree">同意</string>
+	<string name="reject">拒否</string>
+    <string name="login">ログイン</string>
+    <string name="tweet_format">スマホを %1$fm の高さから落としました。 落とすのは%2$d回目です.</string>
+	<string name="notification_title">DropTweet</string>
+	<string name="notification_format">スマホを落としました。 %1$fmです。</string>
+	
+</resources>
