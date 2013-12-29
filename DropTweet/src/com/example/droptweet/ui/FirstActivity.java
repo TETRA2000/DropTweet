@@ -36,13 +36,13 @@ public class FirstActivity extends Activity
             showTutorialDialog();
 		}
         else if(!mManager.hasAccount()) {
-            TwitterManager.init(mManager.getAccount());
-
-            startActivity(new Intent(FirstActivity.this, AuthActivity.class));
+            startActivity(new Intent(this, AuthActivity.class));
             finish();
         }
 		else
 		{
+            TwitterManager.init(mManager.getAccount());
+
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
 		}
