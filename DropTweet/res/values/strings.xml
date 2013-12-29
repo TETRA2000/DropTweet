@@ -7,10 +7,8 @@
 	<string name="agree">AGREE</string>
 	<string name="reject">REJECT</string>
     <string name="login">LOGIN</string>
-    <string name="tweet_pre">Dropped phone </string>
-    <string name="tweet_suf">m!!</string>
-    <string name="tweet_format">Dropped phone %1$dm!! This is %2$d times.</string>
-	<string name="notification_title">OMG!!</string>
+    <string name="tweet_format">Dropped phone %1$fm!! This is %2$d times.</string>
+	<string name="notification_title">DropTweet</string>
 	<string name="notification_format">Dropped your phone %1$fm!!</string>
 	
 </resources>
