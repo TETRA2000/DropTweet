@@ -166,6 +166,7 @@ public class SensorService extends Service implements SensorEventListener {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(SensorService.this);
 
             Intent intent = new Intent(SensorService.this, MainActivity.class);
+            intent.putExtra(Const.LAUNCH_FLAG, Const.FLAG_NOTIFICATION);
             PendingIntent pendingIntet =
                     PendingIntent.getActivity(SensorService.this, 274, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
