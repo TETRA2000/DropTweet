@@ -1,8 +1,8 @@
-package com.example.droptweet.test.twitter;
+package jp.tetra2000.droptweet.test.twitter;
 
-import com.example.droptweet.Const;
-import com.example.droptweet.ui.twitter.Account;
-import com.example.droptweet.ui.twitter.AccountManager;
+import jp.tetra2000.droptweet.Const;
+import jp.tetra2000.droptweet.twitter.Account;
+import jp.tetra2000.droptweet.twitter.AccountManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

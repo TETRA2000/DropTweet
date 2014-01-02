@@ -1,4 +1,4 @@
-package com.example.droptweet.twitter;
+package jp.tetra2000.droptweet.twitter;
 
 public class Account {
     public String name, token, secret;

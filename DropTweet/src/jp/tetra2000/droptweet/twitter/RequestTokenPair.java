@@ -1,4 +1,4 @@
-package com.example.droptweet.twitter;
+package jp.tetra2000.droptweet.twitter;
 import twitter4j.auth.*;
 
 public class RequestTokenPair

@@ -1,4 +1,4 @@
-package com.example.droptweet;
+package jp.tetra2000.droptweet;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,10 +17,11 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.droptweet.twitter.Account;
-import com.example.droptweet.twitter.AccountManager;
-import com.example.droptweet.twitter.TwitterManager;
-import com.example.droptweet.ui.MainActivity;
+import jp.tetra2000.droptweet.R;
+import jp.tetra2000.droptweet.twitter.Account;
+import jp.tetra2000.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.twitter.TwitterManager;
+import jp.tetra2000.droptweet.ui.MainActivity;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;

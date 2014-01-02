@@ -1,4 +1,4 @@
-package com.example.droptweet.ui;
+package jp.tetra2000.droptweet.ui;
 
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.droptweet.Const;
-import com.example.droptweet.R;
-import com.example.droptweet.SensorService;
+import jp.tetra2000.droptweet.Const;
+import jp.tetra2000.droptweet.R;
+import jp.tetra2000.droptweet.SensorService;
 
 public class MainActivity extends Activity {
 

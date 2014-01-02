@@ -1,4 +1,4 @@
-package com.example.droptweet.ui;
+package jp.tetra2000.droptweet.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,10 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.droptweet.Const;
-import com.example.droptweet.R;
-import com.example.droptweet.twitter.AccountManager;
-import com.example.droptweet.ui.auth.AuthActivity;
+import jp.tetra2000.droptweet.Const;
+import jp.tetra2000.droptweet.R;
+import jp.tetra2000.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.ui.auth.AuthActivity;
 
 public class FirstActivity extends Activity
 {

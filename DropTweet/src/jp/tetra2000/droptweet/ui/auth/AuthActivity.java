@@ -1,4 +1,4 @@
-package com.example.droptweet.ui.auth;
+package jp.tetra2000.droptweet.ui.auth;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,9 +7,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.droptweet.Const;
-import com.example.droptweet.R;
-import com.example.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.Const;
+import jp.tetra2000.droptweet.R;
+import jp.tetra2000.droptweet.twitter.AccountManager;
 
 import java.util.Objects;
 

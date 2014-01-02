@@ -1,4 +1,4 @@
-package com.example.droptweet;
+package jp.tetra2000.droptweet;
 
 public class Const
 {

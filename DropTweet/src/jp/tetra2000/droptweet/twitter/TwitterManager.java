@@ -1,6 +1,6 @@
-package com.example.droptweet.twitter;
+package jp.tetra2000.droptweet.twitter;
 
-import com.example.droptweet.Const;
+import jp.tetra2000.droptweet.Const;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;

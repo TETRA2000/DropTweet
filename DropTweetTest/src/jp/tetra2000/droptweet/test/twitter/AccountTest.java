@@ -1,6 +1,6 @@
-package com.example.droptweet.test.twitter;
+package jp.tetra2000.droptweet.test.twitter;
 
-import com.example.droptweet.ui.twitter.Account;
+import jp.tetra2000.droptweet.twitter.Account;
 
 import android.test.AndroidTestCase;
 

@@ -1,9 +1,9 @@
-package com.example.droptweet;
+package jp.tetra2000.droptweet;
 
+import jp.tetra2000.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.twitter.TwitterManager;
 import android.app.Application;
 
-import com.example.droptweet.twitter.AccountManager;
-import com.example.droptweet.twitter.TwitterManager;
 
 public class App extends Application {
     public void onCreate() {

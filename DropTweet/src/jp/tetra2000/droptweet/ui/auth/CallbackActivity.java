@@ -1,5 +1,10 @@
-package com.example.droptweet.ui.auth;
+package jp.tetra2000.droptweet.ui.auth;
 
+import jp.tetra2000.droptweet.twitter.Account;
+import jp.tetra2000.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.twitter.RequestTokenPair;
+import jp.tetra2000.droptweet.twitter.TwitterManager;
+import jp.tetra2000.droptweet.ui.MainActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,11 +12,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.droptweet.twitter.Account;
-import com.example.droptweet.twitter.AccountManager;
-import com.example.droptweet.twitter.RequestTokenPair;
-import com.example.droptweet.twitter.TwitterManager;
-import com.example.droptweet.ui.MainActivity;
 
 import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
