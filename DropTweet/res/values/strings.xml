@@ -7,7 +7,7 @@
 	<string name="agree">AGREE</string>
 	<string name="reject">REJECT</string>
     <string name="login">LOGIN</string>
-    <string name="tweet_format">Dropped phone!! This is %1$dth.</string>
+    <string name="tweet_format">Dropped phone!! This is the %1$dth.</string>
 	<string name="notification_title">DropTweet</string>
 	<string name="notification_format">Dropped your phone.</string>
     <string name="hash_tag">#drop_tweet</string>
