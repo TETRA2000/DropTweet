@@ -160,8 +160,11 @@ public class SensorService extends Service implements SensorEventListener {
 
             Twitter twitter = TwitterManager.getTwitter();
 
+            int dropCount = getDropCount();
+            dropCount++;
+
             StringBuilder builder = new StringBuilder();
-            builder.append(getString(R.string.tweet_format, height, 0));
+            builder.append(getString(R.string.tweet_format, dropCount));
             builder.append(" ");
             builder.append(getString(R.string.hash_tag));
 
@@ -172,8 +175,7 @@ public class SensorService extends Service implements SensorEventListener {
                 Log.d(TAG, "failed to tweet");
                 return null;
             }
-
-            setDropCount(dropCount + 1);
+            
             return height;
         }
 
