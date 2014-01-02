@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -33,6 +34,8 @@ public class SensorService extends Service implements SensorEventListener {
 	
 	private SensorManager mSensorManager;
 	private Sensor mAccel;
+
+    private SharedPreferences mPref;
 	
 	private PowerManager.WakeLock mWakeLock;
 	
@@ -44,6 +47,8 @@ public class SensorService extends Service implements SensorEventListener {
 	@Override
 	public void onCreate() {
 		mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
 	}
 	
 	@Override
@@ -130,6 +135,15 @@ public class SensorService extends Service implements SensorEventListener {
 	private float getHeight(long time) {
 		return (float) (0.5 * GRAVITY * Math.pow(0.000000001 * time, 2));
 	}
+
+    private int getDropCount() {
+        return mPref.getInt(Const.KEY_DROP_COUNT, 0);
+    }
+
+    private void setDropCount(int count) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putInt(Const.KEY_DROP_COUNT, count);
+    }
 
     class TweetTask extends AsyncTask<Float, Integer, Float> {
         private String TAG = "TweetTask";
