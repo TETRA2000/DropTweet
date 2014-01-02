@@ -149,7 +149,7 @@ public class SensorService extends Service implements SensorEventListener {
             StringBuilder builder = new StringBuilder();
             builder.append(getString(R.string.tweet_format, height, 0));
             builder.append(" ");
-            builder.append(Const.HASH_TAG);
+            builder.append(getString(R.string.hash_tag));
 
             try {
                 twitter.updateStatus(builder.toString());
