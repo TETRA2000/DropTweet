@@ -167,12 +167,14 @@ public class SensorService extends Service implements SensorEventListener {
 
             try {
                 twitter.updateStatus(builder.toString());
-                return height;
             } catch (TwitterException e) {
                 e.printStackTrace();
                 Log.d(TAG, "failed to tweet");
                 return null;
             }
+
+            setDropCount(dropCount + 1);
+            return height;
         }
 
         @Override
