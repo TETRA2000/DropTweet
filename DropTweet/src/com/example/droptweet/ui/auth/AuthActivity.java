@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.droptweet.Const;
 import com.example.droptweet.R;
+import com.example.droptweet.twitter.AccountManager;
 
 import java.util.Objects;
 
@@ -22,10 +23,14 @@ public class AuthActivity extends Activity implements Runnable {
     public static RequestToken _req;
     public static OAuthAuthorization _oauth;
 
+    private AccountManager mManager;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_auth);
+
+        mManager = new AccountManager(this);
 
         findViewById(R.id.button_auth).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +38,15 @@ public class AuthActivity extends Activity implements Runnable {
                 new Thread(AuthActivity.this).start();
             }
         });
+    }
+
+    protected void onResume() {
+        super.onResume();
+
+        if(mManager.hasAccount()) {
+            // 認証後に戻るキーで戻ってきた場合
+            finish();
+        }
     }
 
     @Override
