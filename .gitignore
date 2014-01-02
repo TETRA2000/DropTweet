@@ -41,3 +41,5 @@ proguard/
 
 #starUML temp file
 *.~ml
+
+.cache
