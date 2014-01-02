@@ -26,33 +26,37 @@
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="0"
+                android:gravity="center_horizontal"
 				android:layout_width="0dp"
 				android:layout_weight="1"
-				android:background="#FF1607"
+				android:background="#d4f2c9"
 				android:layout_margin="5dp"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="0"
+                android:gravity="center_horizontal"
 				android:layout_width="0dp"
 				android:layout_weight="1"
-				android:background="#FC0F00"
+				android:background="#d4f2c9"
 				android:layout_margin="5dp"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="0"
+                android:gravity="center_horizontal"
 				android:layout_width="0dp"
 				android:layout_weight="1"
-				android:background="#FF0F00"
+				android:background="#d4f2c9"
 				android:layout_margin="5dp"/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="0"
+                android:gravity="center_horizontal"
 				android:layout_width="0dp"
 				android:layout_weight="1"
-				android:background="#FE0E00"
+				android:background="#d4f2c9"
 				android:layout_margin="5dp"/>
 
 		</LinearLayout>
