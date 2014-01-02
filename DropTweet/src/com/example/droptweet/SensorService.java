@@ -1,6 +1,7 @@
 package com.example.droptweet;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.droptweet.twitter.Account;
 import com.example.droptweet.twitter.AccountManager;
 import com.example.droptweet.twitter.TwitterManager;
+import com.example.droptweet.ui.MainActivity;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -162,7 +164,13 @@ public class SensorService extends Service implements SensorEventListener {
         @Override
         public void onPostExecute(Float height) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(SensorService.this);
+
+            Intent intent = new Intent(SensorService.this, MainActivity.class);
+            PendingIntent pendingIntet =
+                    PendingIntent.getActivity(SensorService.this, 274, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 			builder
+                .setContentIntent(pendingIntet)
 				.setSmallIcon(android.R.drawable.ic_dialog_alert)
 				.setContentTitle(getString(R.string.notification_title))
 				.setContentText(getString(R.string.notification_format, height));
