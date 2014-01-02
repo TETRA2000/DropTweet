@@ -143,6 +143,7 @@ public class SensorService extends Service implements SensorEventListener {
     private void setDropCount(int count) {
         SharedPreferences.Editor editor = mPref.edit();
         editor.putInt(Const.KEY_DROP_COUNT, count);
+        editor.commit();
     }
 
     class TweetTask extends AsyncTask<Float, Integer, Float> {
@@ -175,7 +176,8 @@ public class SensorService extends Service implements SensorEventListener {
                 Log.d(TAG, "failed to tweet");
                 return null;
             }
-            
+
+            setDropCount(dropCount);
             return height;
         }
 
