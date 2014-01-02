@@ -11,4 +11,7 @@ public class Const
 	public static final String KEY_USER_NAME = "user_name";
     public static final String KEY_TOKEN = "token";
     public static final String KEY_TOKEN_SECRET = "token_secret";
+
+    public static final String LAUNCH_FLAG = "launch_flag";
+    public static final String FLAG_NOTIFICATION = "notification";
 }
