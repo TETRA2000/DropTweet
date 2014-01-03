@@ -27,7 +27,7 @@ import twitter4j.TwitterException;
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
 	
-	private static final float THRESHOLD = 1.5f;
+	private static final float THRESHOLD = 0.7f;
 	private static final long MIN_FALL_TIME = 247000000; // 0.30m
 	private static final double GRAVITY = 9.8f;
     private static final long MIN_SENSOR_INTERVAL =150000000;
