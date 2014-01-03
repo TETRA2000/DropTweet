@@ -64,7 +64,7 @@ public class SensorService extends Service implements SensorEventListener {
             this.stopSelf();
         }
         
-        mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_UI);
 
         Log.d(TAG, "service started successfully");
         
