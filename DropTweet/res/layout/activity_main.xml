@@ -24,6 +24,7 @@
 			android:layout_centerVertical="true">
 
 			<TextView
+                android:id="@+id/numA"
 				android:layout_height="wrap_content"
 				android:text="0"
                 android:gravity="center_horizontal"
@@ -35,6 +36,7 @@
 				android:layout_margin="5dp"/>
 
 			<TextView
+                android:id="@+id/numB"
 				android:layout_height="wrap_content"
 				android:text="0"
                 android:gravity="center_horizontal"
@@ -46,6 +48,7 @@
 				android:layout_margin="5dp"/>
 
 			<TextView
+                android:id="@+id/numC"
 				android:layout_height="wrap_content"
 				android:text="0"
                 android:gravity="center_horizontal"
@@ -57,6 +60,7 @@
 				android:layout_margin="5dp"/>
 
 			<TextView
+                android:id="@+id/numD"
 				android:layout_height="wrap_content"
 				android:text="0"
                 android:gravity="center_horizontal"
