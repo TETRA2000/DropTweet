@@ -32,6 +32,7 @@ public class SensorService extends Service implements SensorEventListener {
 	private static final float THRESHOLD = 1.5f;
 	private static final long MIN_FALL_TIME = 247000000; // 0.30m
 	private static final double GRAVITY = 9.8f;
+    private static final long MIN_SENSOR_INTERVAL =150000000;
 	
 	private SensorManager mSensorManager;
 	private Sensor mAccel;
@@ -41,6 +42,8 @@ public class SensorService extends Service implements SensorEventListener {
 	private PowerManager.WakeLock mWakeLock;
 	
 	private NotificationManager mNotifManager;
+
+    private long mLastSensorTime;
 	
 	private boolean mFallFlag;
 	private long mFallStartTime; // nano seconds
@@ -99,6 +102,23 @@ public class SensorService extends Service implements SensorEventListener {
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		float[] values = event.values;
+        long timestamp = event.timestamp;
+
+        Log.d(TAG, "x="+values[0] + ", y="+values[1] + ", z="+values[2]);
+
+        if(timestamp - mLastSensorTime > MIN_SENSOR_INTERVAL) {
+            // センサーがスリープした場合
+
+            Log.d(TAG, "sensor sleeped");
+
+            // 落下判定を取り消し
+            mFallFlag = false;
+
+            mLastSensorTime = timestamp;
+            return;
+        } else {
+            mLastSensorTime = timestamp;
+        }
 		
 		// x, y, z values
 		if(values[0] <= THRESHOLD && values[1] <= THRESHOLD && values[2] <= THRESHOLD) {
