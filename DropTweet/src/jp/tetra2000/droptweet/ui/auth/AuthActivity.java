@@ -7,12 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Objects;
+
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.twitter.AccountManager;
-
-import java.util.Objects;
-
 import twitter4j.TwitterException;
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.auth.RequestToken;
@@ -56,7 +55,7 @@ public class AuthActivity extends Activity implements Runnable {
         _oauth = new OAuthAuthorization(conf);
         _oauth.setOAuthConsumer(Const.CONSUMER_KEY, Const.CONSUMER_SECRET);
         try {
-            _req = _oauth.getOAuthRequestToken("callback://CallbackActivity");
+            _req = _oauth.getOAuthRequestToken("droptweet-cb://CallbackActivity");
         } catch (TwitterException e) {
             e.printStackTrace();
             // TODO エラーメッセージ
@@ -83,7 +82,7 @@ public class AuthActivity extends Activity implements Runnable {
             _oauth = new OAuthAuthorization(conf);
             _oauth.setOAuthConsumer(Const.CONSUMER_KEY, Const.CONSUMER_SECRET);
             try {
-                _req = _oauth.getOAuthRequestToken("callback://CallbackActivity");
+                _req = _oauth.getOAuthRequestToken("droptweet-cb://CallbackActivity");
                 return true;
             } catch (TwitterException e) {
                 e.printStackTrace();

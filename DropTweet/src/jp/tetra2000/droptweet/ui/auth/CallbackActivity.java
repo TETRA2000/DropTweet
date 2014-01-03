@@ -1,10 +1,5 @@
 package jp.tetra2000.droptweet.ui.auth;
 
-import jp.tetra2000.droptweet.twitter.Account;
-import jp.tetra2000.droptweet.twitter.AccountManager;
-import jp.tetra2000.droptweet.twitter.RequestTokenPair;
-import jp.tetra2000.droptweet.twitter.TwitterManager;
-import jp.tetra2000.droptweet.ui.MainActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-
+import jp.tetra2000.droptweet.twitter.Account;
+import jp.tetra2000.droptweet.twitter.AccountManager;
+import jp.tetra2000.droptweet.twitter.RequestTokenPair;
+import jp.tetra2000.droptweet.twitter.TwitterManager;
+import jp.tetra2000.droptweet.ui.MainActivity;
 import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
@@ -29,7 +28,7 @@ public class CallbackActivity extends Activity {
 		Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
 		
         if(uri!=null &&
-                uri.toString().startsWith("callback://CallbackActivity")){
+                uri.toString().startsWith("droptweet-cb://CallbackActivity")){
             String verifier = uri.getQueryParameter("oauth_verifier");
             
 			RequestTokenPair pair = new RequestTokenPair(AuthActivity._req, verifier);
