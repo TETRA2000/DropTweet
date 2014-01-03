@@ -58,6 +58,7 @@ public class SensorService extends Service implements SensorEventListener {
 		if(mWakeLock == null || !mWakeLock.isHeld()) {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getString(R.string.app_name));
+            mWakeLock.acquire();
 		}
 		
 		if(!setUpSensor()) {
