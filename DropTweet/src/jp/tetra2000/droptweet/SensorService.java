@@ -17,12 +17,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.twitter.Account;
 import jp.tetra2000.droptweet.twitter.AccountManager;
 import jp.tetra2000.droptweet.twitter.TwitterManager;
 import jp.tetra2000.droptweet.ui.MainActivity;
-
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
