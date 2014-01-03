@@ -2,6 +2,7 @@
 <resources>
 
 	<string name="agree">同意</string>
+    <string name="action_settings">設定</string>
 	<string name="reject">拒否</string>
     <string name="login">ログイン</string>
     <string name="tweet_format">スマホを落としました。 落とすのは%1$d回目です.</string>

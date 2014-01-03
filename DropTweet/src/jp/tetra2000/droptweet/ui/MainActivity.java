@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.TextView;
 
 import jp.tetra2000.droptweet.Const;
@@ -53,6 +55,13 @@ public class MainActivity extends Activity {
         int dropCount = mPref.getInt(Const.KEY_DROP_COUNT, 0);
 
         updateCounter(mTvs, dropCount);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     /**
