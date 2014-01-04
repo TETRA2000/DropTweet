@@ -4,9 +4,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
@@ -71,9 +78,12 @@ public class FirstActivity extends Activity
 	{
 		View layout = getLayoutInflater().inflate(R.layout.dialog_eula, null);
 
+        TextView tv = (TextView) layout.findViewById(R.id.textView_copyright);
+        tv.setText(getCopyright());
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// EULA
-		builder.setTitle(getString(R.string.eula));
+		builder.setTitle(getString(R.string.copyright));
 		// EULA text
 		builder.setView(layout);
 		// Agree
@@ -109,5 +119,34 @@ public class FirstActivity extends Activity
 
 		AlertDialog dialog = builder.create();
 		dialog.show();
+    }
+
+    private String getCopyright() {
+        String langSuffix = "en";
+
+//        String lang = Locale.getDefault().getLanguage();
+//        if(lang.equals(Locale.JAPANESE.toString())) {
+//            langSuffix = "ja";
+//        }
+
+        String fileName = "copyright-" + langSuffix + ".txt";
+
+        AssetManager am = getAssets();
+
+        StringBuilder builder = new StringBuilder();
+        try {
+            InputStream is = am.open(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+            String line;
+            while ((line=br.readLine()) != null) {
+                builder.append(line);
+                builder.append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return builder.toString();
     }
 }
