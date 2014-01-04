@@ -10,7 +10,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,8 +36,6 @@ public class SettingsActivity extends PreferenceActivity {
             // サービスを再起動
             stopService(intent);
             startService(intent);
-
-            Toast.makeText(this, getString(R.string.changed), Toast.LENGTH_SHORT).show();
 
         } else if("logout".equals(key)) {
             showLogoutDialog();

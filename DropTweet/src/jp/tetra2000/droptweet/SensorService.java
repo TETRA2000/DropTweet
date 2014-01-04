@@ -15,8 +15,6 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
-import android.widget.Toast;
 
 import jp.tetra2000.droptweet.twitter.Account;
 import jp.tetra2000.droptweet.twitter.AccountManager;
@@ -73,13 +71,10 @@ public class SensorService extends Service implements SensorEventListener {
         }
 		
 		if(!setUpSensor()) {
-            Log.d(TAG, "no accelerometer");
             this.stopSelf();
         }
         
-        mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_UI);
-
-        Log.d(TAG, "service started successfully");
+        mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_UI);;
         
         return START_STICKY;
 	}
@@ -115,12 +110,8 @@ public class SensorService extends Service implements SensorEventListener {
 		float[] values = event.values;
         long timestamp = event.timestamp;
 
-        Log.d(TAG, "x="+values[0] + ", y="+values[1] + ", z="+values[2]);
-
         if(timestamp - mLastSensorTime > MIN_SENSOR_INTERVAL) {
             // センサーがスリープした場合
-
-            Log.d(TAG, "sensor sleeped");
 
             // 落下判定を取り消し
             mFallFlag = false;
@@ -150,7 +141,6 @@ public class SensorService extends Service implements SensorEventListener {
 				
 				if(fallTime >= MIN_FALL_TIME) {
                     float height = getHeight(fallTime);
-                    Toast.makeText(this, fallTime + "ns: " + height + "m", Toast.LENGTH_LONG).show();
 
                     TweetTask tweetTask = new TweetTask();
                     tweetTask.execute(height);
@@ -205,7 +195,6 @@ public class SensorService extends Service implements SensorEventListener {
                 twitter.updateStatus(builder.toString());
             } catch (TwitterException e) {
                 e.printStackTrace();
-                Log.d(TAG, "failed to tweet");
                 return null;
             }
 

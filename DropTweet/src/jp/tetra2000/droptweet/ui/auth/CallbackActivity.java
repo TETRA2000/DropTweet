@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import jp.tetra2000.droptweet.twitter.Account;
 import jp.tetra2000.droptweet.twitter.AccountManager;
@@ -20,12 +19,8 @@ public class CallbackActivity extends Activity {
     @Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		
-		Toast.makeText(this, "callback", Toast.LENGTH_LONG).show();
 
         Uri uri = getIntent().getData();
-		
-		Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
 		
         if(uri!=null &&
                 uri.toString().startsWith("droptweet-cb://CallbackActivity")){
@@ -70,14 +65,11 @@ public class CallbackActivity extends Activity {
                 //init TwitterManager
                 TwitterManager.init(account);
 
-				Toast.makeText(CallbackActivity.this, "success", Toast.LENGTH_LONG).show();
-
 				//go to MainActivity
 				Intent intent = new Intent(CallbackActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 			} else {
-				Toast.makeText(CallbackActivity.this, "failed", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}
