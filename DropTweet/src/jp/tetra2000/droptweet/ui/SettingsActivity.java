@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.widget.Toast;
 
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.SensorService;
@@ -24,6 +25,8 @@ public class SettingsActivity extends PreferenceActivity {
             // サービスを再起動
             stopService(intent);
             startService(intent);
+
+            Toast.makeText(this, getString(R.string.changed), Toast.LENGTH_SHORT).show();
         }
 
         return true;

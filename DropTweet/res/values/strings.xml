@@ -12,5 +12,6 @@
 	<string name="notification_format">Dropped your phone.</string>
     <string name="hash_tag">#drop_tweet</string>
     <string name="run_in_background">Run in background</string>
+    <string name="changed">Changed</string>
 	
 </resources>
