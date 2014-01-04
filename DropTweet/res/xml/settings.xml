@@ -2,7 +2,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-        android:key="checkKey"
+        android:key="run_in_background"
         android:title="@string/run_in_background"
         android:defaultValue="true" />
 

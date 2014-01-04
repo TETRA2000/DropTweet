@@ -32,6 +32,8 @@ public class SensorService extends Service implements SensorEventListener {
 	private static final long MIN_FALL_TIME = 247000000; // 0.30m
 	private static final double GRAVITY = 9.8f;
     private static final long MIN_SENSOR_INTERVAL =150000000;
+
+    private boolean mBgFlag;
 	
 	private SensorManager mSensorManager;
 	private Sensor mAccel;
@@ -56,11 +58,19 @@ public class SensorService extends Service implements SensorEventListener {
 	
 	@Override
 	public int onStartCommand (Intent intent, int flags, int startId) {
-		if(mWakeLock == null || !mWakeLock.isHeld()) {
-			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getString(R.string.app_name));
-            mWakeLock.acquire();
-		}
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        //バックグラウンドで動作するか
+        mBgFlag = preferences.getBoolean("run_in_background", false);
+
+        if(mBgFlag) {
+            // 再起動した場合、必要に応じてWakeLockを再確保
+            if(mWakeLock == null || !mWakeLock.isHeld()) {
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getString(R.string.app_name));
+                mWakeLock.acquire();
+            }
+        }
 		
 		if(!setUpSensor()) {
             Log.d(TAG, "no accelerometer");
@@ -77,8 +87,9 @@ public class SensorService extends Service implements SensorEventListener {
 	@Override
 	public void onDestroy() {
 		mSensorManager.unregisterListener(this, mAccel);
-		
-		mWakeLock.release();
+
+        if(mBgFlag)
+            mWakeLock.release();
 	}
 
 	@Override
