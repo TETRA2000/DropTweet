@@ -4,7 +4,7 @@
     <CheckBoxPreference
         android:key="run_in_background"
         android:title="@string/run_in_background"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
 
 </PreferenceScreen>
