@@ -43,3 +43,7 @@ proguard/
 *.~ml
 
 .cache
+
+#keystore & pass
+play.jks
+play.pass
