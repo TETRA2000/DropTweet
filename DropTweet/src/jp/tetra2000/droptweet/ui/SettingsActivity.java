@@ -1,11 +1,20 @@
 package jp.tetra2000.droptweet.ui;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.SensorService;
@@ -19,7 +28,8 @@ public class SettingsActivity extends PreferenceActivity {
 
     @Override
     public boolean onPreferenceTreeClick (PreferenceScreen preferenceScreen, Preference preference) {
-        if("run_in_background".equals(preference.getKey())) {
+        String key = preference.getKey();
+        if("run_in_background".equals(key)) {
             Intent intent = new Intent(this, SensorService.class);
 
             // サービスを再起動
@@ -27,8 +37,56 @@ public class SettingsActivity extends PreferenceActivity {
             startService(intent);
 
             Toast.makeText(this, getString(R.string.changed), Toast.LENGTH_SHORT).show();
+        } else if("copyright".equals(key)) {
+            showCopyright();
         }
 
         return true;
+    }
+
+    private void showCopyright()
+    {
+        View layout = getLayoutInflater().inflate(R.layout.dialog_eula, null);
+
+        TextView tv = (TextView) layout.findViewById(R.id.textView_copyright);
+        tv.setText(getCopyright());
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // EULA
+        builder.setTitle(getString(R.string.copyright));
+        // EULA text
+        builder.setView(layout);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private String getCopyright() {
+        String langSuffix = "en";
+
+//        String lang = Locale.getDefault().getLanguage();
+//        if(lang.equals(Locale.JAPANESE.toString())) {
+//            langSuffix = "ja";
+//        }
+
+        String fileName = "copyright-" + langSuffix + ".txt";
+
+        AssetManager am = getAssets();
+
+        StringBuilder builder = new StringBuilder();
+        try {
+            InputStream is = am.open(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+            String line;
+            while ((line=br.readLine()) != null) {
+                builder.append(line);
+                builder.append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return builder.toString();
     }
 }

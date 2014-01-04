@@ -6,5 +6,9 @@
         android:title="@string/run_in_background"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="copyright"
+        android:title="@string/copyright" />
+
 
 </PreferenceScreen>
