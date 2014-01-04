@@ -31,10 +31,6 @@ public class FirstActivity extends Activity
 			showEULADialog();
 
         }
-		else if (isFirstLaunch())
-		{
-            showTutorialDialog();
-		}
         else if(!mManager.hasAccount()) {
             startActivity(new Intent(this, AuthActivity.class));
             finish();
@@ -86,7 +82,11 @@ public class FirstActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					setEulaState(true);
-                    showTutorialDialog();
+
+                    // 認証画面へ
+                    Intent intent = new Intent(FirstActivity.this, AuthActivity.class);
+                    startActivity(intent);
+                    finish();
 				}
 			});
 		// Reject
@@ -110,36 +110,4 @@ public class FirstActivity extends Activity
 		AlertDialog dialog = builder.create();
 		dialog.show();
     }
-	
-	private void showTutorialDialog() {
-        View layout = getLayoutInflater().inflate(R.layout.dialog_tutorial, null);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // EULA
-        builder.setTitle(getString(R.string.eula));
-        // EULA text
-        builder.setView(layout);
-        // Agree
-        builder.setPositiveButton(getString(R.string.login), new AlertDialog.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface p1, int p2)
-            {
-                setLaunchState(true);
-                startActivity(new Intent(FirstActivity.this, AuthActivity.class));
-                finish();
-            }
-        });
-        // Cancel
-        builder.setCancelable(true);
-        builder.setOnCancelListener(new AlertDialog.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface p1)
-            {
-                finish();
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-	}
 }
