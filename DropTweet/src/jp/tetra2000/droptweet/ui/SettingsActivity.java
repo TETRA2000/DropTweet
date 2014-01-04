@@ -1,6 +1,7 @@
 package jp.tetra2000.droptweet.ui;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.io.InputStreamReader;
 
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.SensorService;
+import jp.tetra2000.droptweet.twitter.AccountManager;
 
 public class SettingsActivity extends PreferenceActivity {
     @Override
@@ -37,11 +39,44 @@ public class SettingsActivity extends PreferenceActivity {
             startService(intent);
 
             Toast.makeText(this, getString(R.string.changed), Toast.LENGTH_SHORT).show();
+
+        } else if("logout".equals(key)) {
+            showLogoutDialog();
         } else if("copyright".equals(key)) {
             showCopyright();
         }
 
         return true;
+    }
+
+    private void showLogoutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(getString(R.string.logout));
+        // text
+        builder.setMessage(getString(R.string.are_you_ok));
+
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // ログアウト
+                AccountManager manager = new AccountManager(SettingsActivity.this);
+                manager.removeAccount();
+
+                finish();
+            }
+        });
+
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 何もしない
+            }
+        });
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void showCopyright()

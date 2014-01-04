@@ -5,9 +5,13 @@
     <string name="action_settings">設定</string>
 	<string name="reject">拒否</string>
     <string name="login">ログイン</string>
+    <string name="logout">ログアウト</string>
     <string name="tweet_format">スマホを落としました。 落とすのは%1$d回目です.</string>
 	<string name="notification_format">スマホを落としました。</string>
     <string name="run_in_background">バックグラウンドで動作</string>
     <string name="changed">変更しました</string>
+    <string name="are_you_ok">よろしいですか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
 
 </resources>

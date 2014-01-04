@@ -15,14 +15,19 @@ import android.widget.TextView;
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.SensorService;
+import jp.tetra2000.droptweet.twitter.AccountManager;
 
 public class MainActivity extends Activity {
     private SharedPreferences mPref;
     private TextView[] mTvs;
 
+    private AccountManager mManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mManager = new AccountManager(this);
 
         String flag =  getIntent().getStringExtra(Const.LAUNCH_FLAG);
 
@@ -53,6 +58,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // 設定画面でログアウトされた場合
+        if(!mManager.hasAccount()) {
+            finish();
+        }
 
         int dropCount = mPref.getInt(Const.KEY_DROP_COUNT, 0);
 

@@ -7,6 +7,10 @@
         android:defaultValue="false" />
 
     <PreferenceScreen
+        android:key="logout"
+        android:title="@string/logout" />
+
+    <PreferenceScreen
         android:key="copyright"
         android:title="@string/copyright" />
 
