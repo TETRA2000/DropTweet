@@ -1,15 +1,17 @@
 package jp.tetra2000.droptweet.twitter;
 
-import jp.tetra2000.droptweet.Const;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import jp.tetra2000.droptweet.Const;
 
 
 public class AccountManager {
     private SharedPreferences mPref;
 
     public AccountManager(Context context) {
-        mPref = context.getSharedPreferences(Const.PREF_NAME, Context.MODE_PRIVATE);
+        mPref = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public boolean hasAccount() {

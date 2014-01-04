@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class MainActivity extends Activity {
         };
         mTvs = tvs;
 
-        mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
+        mPref = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     @Override

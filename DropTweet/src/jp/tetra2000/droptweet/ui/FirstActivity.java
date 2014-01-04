@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import jp.tetra2000.droptweet.Const;
@@ -22,7 +23,7 @@ public class FirstActivity extends Activity
 	{
 		super.onCreate(state);
 
-        mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
+        mPref = PreferenceManager.getDefaultSharedPreferences(this);
         mManager = new AccountManager(this);
 
 		if (!getEulaState())

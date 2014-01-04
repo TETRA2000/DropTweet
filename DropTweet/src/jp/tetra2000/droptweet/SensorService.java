@@ -13,6 +13,7 @@ import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -50,7 +51,7 @@ public class SensorService extends Service implements SensorEventListener {
 	public void onCreate() {
 		mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        mPref = getSharedPreferences(Const.PREF_NAME, MODE_PRIVATE);
+        mPref = PreferenceManager.getDefaultSharedPreferences(this);
 	}
 	
 	@Override
