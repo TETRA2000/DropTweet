@@ -62,6 +62,9 @@ public class SettingsActivity extends PreferenceActivity {
                 // ログアウト
                 AccountManager manager = new AccountManager(SettingsActivity.this);
                 manager.removeAccount();
+				
+				Intent intent = new Intent(SettingsActivity.this, SensorService.class);
+				stopService(intent);
 
                 finish();
             }
