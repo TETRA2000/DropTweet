@@ -40,6 +40,10 @@
                 <data android:scheme="droptweet-cb" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/action_settings"
+            android:name=".ui.SettingsActivity">
+        </activity>
 
         <service
             android:name=".SensorService"
