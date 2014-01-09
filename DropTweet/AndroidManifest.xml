@@ -44,6 +44,9 @@
             android:label="@string/action_settings"
             android:name=".ui.SettingsActivity">
         </activity>
+        <activity
+            android:label="@string/copyright"
+            android:name=".ui.CopyrightActivity" />
 
         <service
             android:name=".SensorService"

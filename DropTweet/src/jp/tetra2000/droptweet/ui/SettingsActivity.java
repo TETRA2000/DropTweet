@@ -84,19 +84,8 @@ public class SettingsActivity extends PreferenceActivity {
 
     private void showCopyright()
     {
-        View layout = getLayoutInflater().inflate(R.layout.dialog_eula, null);
-
-        TextView tv = (TextView) layout.findViewById(R.id.textView_copyright);
-        tv.setText(getCopyright());
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // EULA
-        builder.setTitle(getString(R.string.copyright));
-        // EULA text
-        builder.setView(layout);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        Intent intent = new Intent(this, CopyrightActivity.class);
+        startActivity(intent);
     }
 
     private String getCopyright() {
