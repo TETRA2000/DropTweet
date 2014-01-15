@@ -1,9 +1,5 @@
 package jp.tetra2000.droptweet.ui;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
-
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -16,6 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
@@ -69,10 +69,8 @@ public class MainActivity extends Activity {
 
         // adView を追加
         layout.addView(adView);
-        
-        // テスト用リクエスト
+
         AdRequest adRequest = new AdRequest();
-        adRequest.addTestDevice(AdRequest.TEST_EMULATOR); 
         
         // 広告を読み込む
         adView.loadAd(adRequest);
