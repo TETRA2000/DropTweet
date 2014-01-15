@@ -14,4 +14,6 @@ public class Const
 
     public static final String LAUNCH_FLAG = "launch_flag";
     public static final String FLAG_NOTIFICATION = "notification";
+    
+    public static final String AD_UNIT_ID = "";
 }
