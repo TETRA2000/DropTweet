@@ -123,7 +123,7 @@ public class SensorService extends Service implements SensorEventListener {
         }
 		
 		// x, y, z values
-		if(Math.abs(values[0]) <= THRESHOLD && Math.abs(values[1]) <= THRESHOLD && Math.abs(values[2]) <= THRESHOLD) {
+        if(Math.abs(values[2]) <= THRESHOLD && Math.abs(values[0]) <= THRESHOLD && Math.abs(values[1]) <= THRESHOLD) {
 			// falling
 			
 			if(!mFallFlag) {
