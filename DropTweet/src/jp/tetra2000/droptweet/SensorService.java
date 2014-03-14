@@ -196,8 +196,23 @@ public class SensorService extends Service implements SensorEventListener {
             int dropCount = getDropCount();
             dropCount++;
 
+            String countStr;
+            switch (dropCount) {
+                case 1:
+                    countStr = "the first time";
+                    break;
+                case 2:
+                    countStr = "the second time";
+                    break;
+                case 3:
+                    countStr = "the third time";
+                    break;
+                default:
+                    countStr = "the " + dropCount + "th";
+            }
+
             StringBuilder builder = new StringBuilder();
-            builder.append(getString(R.string.tweet_format, dropCount));
+            builder.append(getString(R.string.tweet_format, countStr));
             builder.append(" ");
             builder.append(getString(R.string.hash_tag));
 
