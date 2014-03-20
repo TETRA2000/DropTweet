@@ -18,13 +18,14 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import jp.tetra2000.droptweet.twitter.Account;
 import jp.tetra2000.droptweet.twitter.AccountManager;
 import jp.tetra2000.droptweet.twitter.TwitterManager;
 import jp.tetra2000.droptweet.ui.MainActivity;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import java.util.*;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -202,7 +203,7 @@ public class SensorService extends Service implements SensorEventListener {
 			Locale locale =
 				getResources().getConfiguration().locale;
 				
-			if(!Locale.JAPANESE.equals(locale.getDisplayLanguage())) {
+			if(!locale.getLanguage().equals(Locale.JAPANESE.getLanguage())) {
 				switch (dropCount) {
 					case 1:
 						countStr = "the first time";
