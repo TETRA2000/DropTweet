@@ -202,7 +202,7 @@ public class SensorService extends Service implements SensorEventListener {
 			Locale locale =
 				getResources().getConfiguration().locale;
 				
-			if(Locale.ENGLISH.equals(locale.getDisplayLanguage())) {
+			if(!Locale.JAPANESE.equals(locale.getDisplayLanguage())) {
 				switch (dropCount) {
 					case 1:
 						countStr = "the first time";
