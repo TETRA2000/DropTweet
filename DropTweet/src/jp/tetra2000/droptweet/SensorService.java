@@ -24,6 +24,7 @@ import jp.tetra2000.droptweet.twitter.TwitterManager;
 import jp.tetra2000.droptweet.ui.MainActivity;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import java.util.*;
 
 public class SensorService extends Service implements SensorEventListener {
     private static final String TAG = "SensorService";
@@ -195,21 +196,29 @@ public class SensorService extends Service implements SensorEventListener {
 
             int dropCount = getDropCount();
             dropCount++;
-
-            String countStr;
-            switch (dropCount) {
-                case 1:
-                    countStr = "the first time";
-                    break;
-                case 2:
-                    countStr = "the second time";
-                    break;
-                case 3:
-                    countStr = "the third time";
-                    break;
-                default:
-                    countStr = "the " + dropCount + "th";
-            }
+			
+			String countStr;
+			
+			Locale locale =
+				getResources().getConfiguration().locale;
+				
+			if(Locale.ENGLISH.equals(locale.getDisplayLanguage())) {
+				switch (dropCount) {
+					case 1:
+						countStr = "the first time";
+						break;
+					case 2:
+						countStr = "the second time";
+						break;
+					case 3:
+						countStr = "the third time";
+						break;
+					default:
+						countStr = "the " + dropCount + "th";
+				}
+			} else {
+				countStr = dropCount + "";
+			}
 
             StringBuilder builder = new StringBuilder();
             builder.append(getString(R.string.tweet_format, countStr));
