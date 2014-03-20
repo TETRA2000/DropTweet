@@ -16,6 +16,8 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
+import java.util.Locale;
+
 import jp.tetra2000.droptweet.twitter.Account;
 import jp.tetra2000.droptweet.twitter.AccountManager;
 import jp.tetra2000.droptweet.twitter.TwitterManager;
@@ -185,21 +187,29 @@ public class SensorService extends Service implements SensorEventListener {
 
             int dropCount = getDropCount();
             dropCount++;
-
-            String countStr;
-            switch (dropCount) {
-                case 1:
-                    countStr = "the first time";
-                    break;
-                case 2:
-                    countStr = "the second time";
-                    break;
-                case 3:
-                    countStr = "the third time";
-                    break;
-                default:
-                    countStr = "the " + dropCount + "th";
-            }
+			
+			String countStr;
+			
+			Locale locale =
+				getResources().getConfiguration().locale;
+				
+			if(!locale.getLanguage().equals(Locale.JAPANESE.getLanguage())) {
+				switch (dropCount) {
+					case 1:
+						countStr = "the first time";
+						break;
+					case 2:
+						countStr = "the second time";
+						break;
+					case 3:
+						countStr = "the third time";
+						break;
+					default:
+						countStr = "the " + dropCount + "th";
+				}
+			} else {
+				countStr = dropCount + "";
+			}
 
             StringBuilder builder = new StringBuilder();
             builder.append(getString(R.string.tweet_format, countStr));
