@@ -47,3 +47,4 @@ proguard/
 #keystore & pass
 play.jks
 play.pass
+DropTweet/res/values/analytics.xml

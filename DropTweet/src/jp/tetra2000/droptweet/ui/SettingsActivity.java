@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +26,21 @@ public class SettingsActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance().activityStart(this);
+    }
+
+
+    @Override
+    protected void onStop() {
+        EasyTracker.getInstance().activityStop(this);
+
+        super.onStop();
     }
 
     @Override

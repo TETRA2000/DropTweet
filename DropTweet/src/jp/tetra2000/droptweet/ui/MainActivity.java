@@ -1,9 +1,5 @@
 package jp.tetra2000.droptweet.ui;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
-
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -16,6 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
@@ -79,6 +80,13 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance().activityStart(this);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -90,6 +98,13 @@ public class MainActivity extends Activity {
         int dropCount = mPref.getInt(Const.KEY_DROP_COUNT, 0);
 
         updateCounter(mTvs, dropCount);
+    }
+
+    @Override
+    protected void onStop() {
+        EasyTracker.getInstance().activityStop(this);
+
+        super.onStop();
     }
 
     @Override
