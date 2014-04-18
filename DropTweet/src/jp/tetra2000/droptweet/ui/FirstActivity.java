@@ -3,6 +3,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import jp.tetra2000.droptweet.twitter.AccountManager;
 import jp.tetra2000.droptweet.ui.auth.AuthActivity;
 
@@ -27,4 +29,19 @@ public class FirstActivity extends Activity
 			finish();
 		}
 	}
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance().activityStart(this);
+    }
+
+
+    @Override
+    protected void onStop() {
+        EasyTracker.getInstance().activityStop(this);
+
+        super.onStop();
+    }
 }

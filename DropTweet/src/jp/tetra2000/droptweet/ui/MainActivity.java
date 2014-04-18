@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
@@ -69,11 +70,20 @@ public class MainActivity extends Activity {
 
         // adView を追加
         layout.addView(adView);
-
+        
+        // テスト用リクエスト
         AdRequest adRequest = new AdRequest();
+        adRequest.addTestDevice(AdRequest.TEST_EMULATOR); 
         
         // 広告を読み込む
         adView.loadAd(adRequest);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance().activityStart(this);
     }
 
     @Override
@@ -88,6 +98,13 @@ public class MainActivity extends Activity {
         int dropCount = mPref.getInt(Const.KEY_DROP_COUNT, 0);
 
         updateCounter(mTvs, dropCount);
+    }
+
+    @Override
+    protected void onStop() {
+        EasyTracker.getInstance().activityStop(this);
+
+        super.onStop();
     }
 
     @Override
