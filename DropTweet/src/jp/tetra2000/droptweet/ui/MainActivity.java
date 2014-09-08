@@ -10,12 +10,8 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
 import com.google.analytics.tracking.android.EasyTracker;
 
 import jp.tetra2000.droptweet.Const;
@@ -28,7 +24,6 @@ public class MainActivity extends Activity {
     private TextView[] mTvs;
 
     private AccountManager mManager;
-	private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,23 +55,6 @@ public class MainActivity extends Activity {
         mTvs = tvs;
 
         mPref = PreferenceManager.getDefaultSharedPreferences(this);
-        
-        // adView を作成する
-        adView = new AdView(this, AdSize.BANNER, Const.AD_UNIT_ID);
-
-        // 属性 android:id="@+id/mainLayout" が与えられているものとして
-        // LinearLayout をルックアップする
-        FrameLayout layout = (FrameLayout)findViewById(R.id.adMain);
-
-        // adView を追加
-        layout.addView(adView);
-        
-        // テスト用リクエスト
-        AdRequest adRequest = new AdRequest();
-        adRequest.addTestDevice(AdRequest.TEST_EMULATOR); 
-        
-        // 広告を読み込む
-        adView.loadAd(adRequest);
     }
 
     @Override
