@@ -49,6 +49,8 @@ public class SensorService extends Service implements SensorEventListener {
 	private boolean mFallFlag;
 	private long mFallStartTime; // nano seconds
 	
+	private boolean mWatchingSensor;
+	
 	@Override
 	public void onCreate() {
 		mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -74,9 +76,10 @@ public class SensorService extends Service implements SensorEventListener {
 		
 		if(!setUpSensor()) {
             this.stopSelf();
+        } else if(!mWatchingSensor) {
+            mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_UI);
+            mWatchingSensor = true;
         }
-        
-        mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_UI);;
         
         return START_STICKY;
 	}
