@@ -60,6 +60,9 @@ public class SensorService extends Service implements SensorEventListener {
 	
 	@Override
 	public int onStartCommand (Intent intent, int flags, int startId) {
+		// update flag
+		App.serviceRunning = true;
+		
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //バックグラウンドで動作するか
@@ -90,6 +93,9 @@ public class SensorService extends Service implements SensorEventListener {
 
         if(mBgFlag)
             mWakeLock.release();
+        
+        // update flag
+        App.serviceRunning = false;
 	}
 
 	@Override

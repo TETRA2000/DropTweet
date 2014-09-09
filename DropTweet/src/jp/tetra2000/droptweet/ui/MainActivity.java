@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.analytics.tracking.android.EasyTracker;
 
+import jp.tetra2000.droptweet.App;
 import jp.tetra2000.droptweet.Const;
 import jp.tetra2000.droptweet.R;
 import jp.tetra2000.droptweet.SensorService;
@@ -37,7 +38,7 @@ public class MainActivity extends Activity {
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancelAll();
-        } else {
+        } else if(!App.serviceRunning) {
             //サービスを起動
             Intent intent = new Intent(this, SensorService.class);
             startService(intent);
