@@ -6,6 +6,8 @@ import android.app.Application;
 
 
 public class App extends Application {
+	public static volatile Boolean serviceRunning = false;
+	
     public void onCreate() {
         AccountManager manager = new AccountManager(this);
         if(manager.hasAccount()) {
